@@ -52,6 +52,7 @@ namespace NetCoreHomeWork.Controllers
                 return BadRequest();
             }
             _context.Entry(department).State = EntityState.Modified;
+            department.DateModified = DateTime.Now;
             try
             {
 

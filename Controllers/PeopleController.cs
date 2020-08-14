@@ -53,7 +53,7 @@ namespace NetCoreHomeWork.Controllers
             }
 
             _context.Entry(person).State = EntityState.Modified;
-
+            person.DateModified = DateTime.Now;
             try
             {
                 await _context.SaveChangesAsync();

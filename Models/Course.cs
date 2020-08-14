@@ -15,6 +15,7 @@ namespace NetCoreHomeWork.Models
         public string Title { get; set; }
         public int Credits { get; set; }
         public int DepartmentId { get; set; }
+        public DateTime? DateModified { get; set; }
 
         public virtual Department Department { get; set; }
         public virtual ICollection<CourseInstructor> CourseInstructor { get; set; }

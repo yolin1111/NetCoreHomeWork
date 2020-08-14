@@ -127,6 +127,7 @@ namespace NetCoreHomeWork.Controllers
             }
 
             _context.Entry(course).State = EntityState.Modified;
+            course.DateModified = DateTime.Now;
 
             try
             {

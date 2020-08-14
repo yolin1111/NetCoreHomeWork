@@ -29,7 +29,7 @@ namespace NetCoreHomeWork.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ContosoUniversity;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
@@ -42,6 +42,8 @@ namespace NetCoreHomeWork.Models
                     .HasName("IX_DepartmentID");
 
                 entity.Property(e => e.CourseId).HasColumnName("CourseID");
+
+                entity.Property(e => e.DateModified).HasColumnType("datetime");
 
                 entity.Property(e => e.DepartmentId)
                     .HasColumnName("DepartmentID")
@@ -89,6 +91,8 @@ namespace NetCoreHomeWork.Models
                 entity.Property(e => e.DepartmentId).HasColumnName("DepartmentID");
 
                 entity.Property(e => e.Budget).HasColumnType("money");
+
+                entity.Property(e => e.DateModified).HasColumnType("datetime");
 
                 entity.Property(e => e.InstructorId).HasColumnName("InstructorID");
 
@@ -156,6 +160,8 @@ namespace NetCoreHomeWork.Models
             modelBuilder.Entity<Person>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.DateModified).HasColumnType("datetime");
 
                 entity.Property(e => e.Discriminator)
                     .IsRequired()
