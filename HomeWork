@@ -30,3 +30,7 @@ dotnet ef migrations add DateModified
 dotnet ef database update
 
 請修改 Course, Department, Person 表格欄位，新增 IsDeleted 欄位 (bit) (請新增資料庫移轉紀錄)，且讓所有刪除這三個表格資料的 API 都不能真的刪除資料，而是標記刪除即可，標記刪除後，在 GET 資料的時候不能輸出該筆資料。
+新增 public bool IsDeleted { get; set; }
+dotnet ef migrations add IsDeleted
+dotnet ef database update
+dotnet ef dbcontext scaffold "Server=(localdb)\MSSQLLocalDB;Database=ContosoUniversity;Trusted_Connection=True;MultipleActiveResultSets=true" Microsoft.EntityFrameworkCore.SqlServer -o Models -f

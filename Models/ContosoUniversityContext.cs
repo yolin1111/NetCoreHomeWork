@@ -49,6 +49,10 @@ namespace NetCoreHomeWork.Models
                     .HasColumnName("DepartmentID")
                     .HasDefaultValueSql("((1))");
 
+                entity.Property(e => e.IsDeleted)
+                    .IsRequired()
+                    .HasDefaultValueSql("(CONVERT([bit],(0)))");
+
                 entity.Property(e => e.Title).HasMaxLength(50);
 
                 entity.HasOne(d => d.Department)
@@ -95,6 +99,10 @@ namespace NetCoreHomeWork.Models
                 entity.Property(e => e.DateModified).HasColumnType("datetime");
 
                 entity.Property(e => e.InstructorId).HasColumnName("InstructorID");
+
+                entity.Property(e => e.IsDeleted)
+                    .IsRequired()
+                    .HasDefaultValueSql("(CONVERT([bit],(0)))");
 
                 entity.Property(e => e.Name).HasMaxLength(50);
 
@@ -175,6 +183,10 @@ namespace NetCoreHomeWork.Models
                     .HasMaxLength(50);
 
                 entity.Property(e => e.HireDate).HasColumnType("datetime");
+
+                entity.Property(e => e.IsDeleted)
+                    .IsRequired()
+                    .HasDefaultValueSql("(CONVERT([bit],(0)))");
 
                 entity.Property(e => e.LastName)
                     .IsRequired()
