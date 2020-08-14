@@ -69,6 +69,37 @@ namespace NetCoreHomeWork.Controllers
             return course;
         }
 
+
+        //請用 Raw SQL Query 的方式查詢 vwDepartmentCourseCount 檢視表的內容
+        [HttpGet("vwdcc")]
+        public async Task<ActionResult<IEnumerable<VwDepartmentCourseCount>>> GetvwdccCourse()
+        //public async Task<ActionResult<List<VwCourseStudentCount>>> GetvwcsCourse(int id)
+        {
+            var vwdcc = await _context.VwDepartmentCourseCount.FromSqlRaw(" SELECT * FROM vwDepartmentCourseCount ").ToListAsync();
+
+            if (vwdcc == null)
+            {
+                return NotFound();
+            }
+
+            return vwdcc;
+        }
+
+        [HttpGet("vwdcc/{id}")]
+        public async Task<ActionResult<IEnumerable<VwDepartmentCourseCount>>> GetvwdccCourse(int id)
+        //public async Task<ActionResult<List<VwCourseStudentCount>>> GetvwcsCourse(int id)
+        {
+            var vwdcc = await _context.VwDepartmentCourseCount.FromSqlInterpolated($"SELECT * FROM vwDepartmentCourseCount WHERE DepartmentID = {id}").ToListAsync();
+
+            if (vwdcc == null)
+            {
+                return NotFound();
+            }
+
+            return vwdcc;
+        }
+
+
         // GET: api/Courses/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Course>> GetCourse(int id)
