@@ -32,11 +32,41 @@ namespace NetCoreHomeWork.Controllers
             return await _context.VwCourseStudents.ToListAsync();
             //return await _context.Course.ToListAsync();
         }
+
+        //要加入 IEnumerable 這似乎是LINQ的東西
+        [HttpGet("vwcs/{id}")]
+        public async Task<ActionResult<IEnumerable<VwCourseStudents>>> GetvwcsCourse(int id)
+        //public async Task<ActionResult<List<VwCourseStudents>>> GetvwcsCourse(int id)
+        {
+            var course = await _context.VwCourseStudents.Where(a => a.CourseId == id).ToListAsync();
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return course;
+        }
+
+
         [HttpGet("vwcsc")]
         public async Task<ActionResult<IEnumerable<VwCourseStudentCount>>> GetvwcscCourse()
         {
             return await _context.VwCourseStudentCount.ToListAsync();
             //return await _context.Course.ToListAsync();
+        }
+        [HttpGet("vwcsc/{id}")]
+        public async Task<ActionResult<IEnumerable<VwCourseStudentCount>>> GetvwcscCourse(int id)
+        //public async Task<ActionResult<List<VwCourseStudentCount>>> GetvwcsCourse(int id)
+        {
+            var course = await _context.VwCourseStudentCount.Where(a => a.CourseId == id).ToListAsync();
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return course;
         }
 
         // GET: api/Courses/5
@@ -53,20 +83,6 @@ namespace NetCoreHomeWork.Controllers
             return course;
         }
 
-        //錯誤待排除
-        [HttpGet("vwcs/{id}")]
-        public async Task<ActionResult<VwCourseStudents>> GetvwcsCourse(int id)
-        {
-            var course = await _context.VwCourseStudents.Select(a = > new VwCourseStudents { });
-
-            Console.WriteLine(course.GetType());
-            if (course == null)
-            {
-                return NotFound();
-            }
-
-            return course;
-        }
 
         // PUT: api/Courses/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

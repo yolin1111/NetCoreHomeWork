@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Projects\\NetCoreHomeWork\\NetCoreHomeWork.csproj": {}
+    "D:\\Projects\\NetCoreHomeWork\\NetCoreHomeWork.csproj": {}
   },
   "projects": {
-    "d:\\Projects\\NetCoreHomeWork\\NetCoreHomeWork.csproj": {
+    "D:\\Projects\\NetCoreHomeWork\\NetCoreHomeWork.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Projects\\NetCoreHomeWork\\NetCoreHomeWork.csproj",
+        "projectUniqueName": "D:\\Projects\\NetCoreHomeWork\\NetCoreHomeWork.csproj",
         "projectName": "NetCoreHomeWork",
-        "projectPath": "d:\\Projects\\NetCoreHomeWork\\NetCoreHomeWork.csproj",
+        "projectPath": "D:\\Projects\\NetCoreHomeWork\\NetCoreHomeWork.csproj",
         "packagesPath": "C:\\Users\\tatung\\.nuget\\packages\\",
-        "outputPath": "d:\\Projects\\NetCoreHomeWork\\obj\\",
+        "outputPath": "D:\\Projects\\NetCoreHomeWork\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tatung\\AppData\\Roaming\\NuGet\\NuGet.Config",
