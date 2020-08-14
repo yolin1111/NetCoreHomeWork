@@ -26,6 +26,7 @@ namespace NetCoreHomeWork.Controllers
         {
             return await _context.Course.ToListAsync();
         }
+
         [HttpGet("vwcs")]
         public async Task<ActionResult<IEnumerable<VwCourseStudents>>> GetvwcsCourse()
         {
@@ -47,7 +48,6 @@ namespace NetCoreHomeWork.Controllers
 
             return course;
         }
-
 
         [HttpGet("vwcsc")]
         public async Task<ActionResult<IEnumerable<VwCourseStudentCount>>> GetvwcscCourse()
