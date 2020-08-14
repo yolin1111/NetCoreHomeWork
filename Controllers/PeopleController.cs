@@ -95,9 +95,11 @@ namespace NetCoreHomeWork.Controllers
                 return NotFound();
             }
 
-            _context.Person.Remove(person);
+            //_context.Person.Remove(person);
+            //await _context.SaveChangesAsync();
+            _context.Entry(person).State = EntityState.Modified;
+            person.IsDeleted = true;
             await _context.SaveChangesAsync();
-
             return person;
         }
 

@@ -24,7 +24,7 @@ namespace NetCoreHomeWork.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
         {
-            return await _context.Course.ToListAsync();
+            return await _context.Course.Where(a => a.IsDeleted == false).ToListAsync();
         }
 
         [HttpGet("vwcs")]
@@ -102,10 +102,10 @@ namespace NetCoreHomeWork.Controllers
 
         // GET: api/Courses/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Course>> GetCourse(int id)
+        public async Task<ActionResult<IEnumerable<Course>>> GetCourse(int id)
         {
-            var course = await _context.Course.FindAsync(id);
-
+            //var course = await _context.Course.FindAsync(id);
+            var course = await _context.Course.Where(a => a.IsDeleted == false && a.CourseId == id).ToListAsync();
             if (course == null)
             {
                 return NotFound();
@@ -170,8 +170,11 @@ namespace NetCoreHomeWork.Controllers
                 return NotFound();
             }
 
-            _context.Course.Remove(course);
+            //_context.Course.Remove(course);
+            _context.Entry(course).State = EntityState.Modified;
+            course.IsDeleted = true;
             await _context.SaveChangesAsync();
+
 
             return course;
         }
